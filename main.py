@@ -20,4 +20,6 @@ def root():
 
 @app.post("/predict/")
 def predict(item: Item):
+    if not item.text.strip():
+        raise HTTPException(status_code=400, detail="Text cannot be empty")
     return classifier(item.text)[0]
