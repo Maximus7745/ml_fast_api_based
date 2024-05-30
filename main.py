@@ -1,5 +1,5 @@
 from fastapi import FastAPI
-from transformers import pipeline
+from transformers import pipeline, __version__ as transformers_version
 from pydantic import BaseModel
 
 
@@ -7,10 +7,8 @@ class Item(BaseModel):
     text: str
 
 
-
 app = FastAPI()
 classifier = pipeline("sentiment-analysis")
-
 
 
 @app.get("/")
