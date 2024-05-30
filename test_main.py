@@ -24,3 +24,12 @@ def test_predict_negative():
     json_data = response.json()
     assert response.status_code == 200
     assert json_data['label'] == 'NEGATIVE'
+
+
+def test_predict_empty_text():
+    response = client.post("/predict/",
+                           json={"text": ""})
+    json_data = response.json()
+    assert response.status_code == 400  # Assuming that the API returns a 400 status code for bad requests
+    assert "detail" in json_data
+    assert json_data["detail"] == "Text cannot be empty"
