@@ -1,4 +1,4 @@
-from fastapi import FastAPI
+from fastapi import FastAPI, HTTPException
 from transformers import pipeline, __version__ as transformers_version
 from pydantic import BaseModel
 
